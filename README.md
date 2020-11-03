@@ -7,6 +7,7 @@
 * **Maven** Para compilar el programa.
 * **Git** Para clonar este repositorio.
 * **JDK & JRE 8** Para correr el programa.
+* **Postman** Para probar la infraestructura
 * **Docker & Docker compose** Para tener una instancia local del programa. 
 
 ## Contexto del problema
@@ -132,7 +133,7 @@ Observamos nuestro Dockerfile a continuación:
     
     ![](/img/12.png)
     
-    Para esta prueba de concepto seleccionaremos un máximo de 3 instancias y para la política de escalamiento pondremos la política de seguimiento de objetivos como se ve en la siguiente imagen:
+    Para esta prueba de concepto seleccionaremos un máximo de 3 instancias y para la política de escalamiento pondremos la política de seguimiento de objetivos  (Cuando el porcentaje de uso cpu sea mayor que 50% creará una nueva instancia, por efectos prácticos pondremos un número bajo) como se ve en la siguiente imagen
     
     ![](/img/13.png)
 
@@ -151,7 +152,38 @@ Observamos nuestro Dockerfile a continuación:
     ![](/img/16.png) ![](/img/17.png)
     ![](/img/18.png) ![](/img/19.png)
 
-10. 
+10. **Editaremos el grupo de autoescalamiento para que use el loadbalancer que acabamos de crear**
+
+    ![](/img/20.png)
+
+Una vez terminados estos pasos nuestra infraestructura ya estará correctamente configurada, para probarla realizaremos pruebas de cargas con postman
+
+## Pruebas de carga
+
+El objetivo de las pruebas de carga es probar que el grupo de auto escalamiento esté funcionando correctamente y cuando encuentre un uso de cpu elevado añada nuevos nodos a la red. 
+
+Para realizar las pruebas de carga con postman seguimos estos pasos:
+
+Cree una colección de postman con un request que exija mucho a la cpu de la máquina de la siguiente manera
+
+![](/img/52.png)
+    
+![](/img/53.png)
+    
+![](/img/54.png)
+    
+En la request pondremos el dns del loadbalancer de aws.
+
+![](/img/55.png)
+    
+Con el runner de postman ejecutaremos 150 peticiones para poder probar nuestra infraestructura.
+
+![](/img/56.png)
+    
+## Resultado de pruebas y análisis.
+
+
+
 
 
 
