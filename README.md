@@ -182,6 +182,57 @@ Con el runner de postman ejecutaremos 150 peticiones para poder probar nuestra i
     
 ## Resultado de pruebas y análisis.
 
+Observamos el numero de request en el tiempo, las cuales indican que nuestras pruebas corrieron exitosamente.
+
+![](/img/30.png)
+
+En las siguientes imágenes observamos el consumo de cpu en el tiempo, además observamos que a mayor uso de CPU se iban creando nuevas instancias (en este caso 2) que permitieran equilibrar la carga para la cpu, el consumo de la misma se disminuye a medida que se crean.
+
+![](/img/28.png)
+
+![](/img/23.png)
+
+![](/img/26.png)
+
+También observamos el tiempo de respuesta de las peticiones el cual es constante, algunas peticiones fallaron debido a que el servicio aun no iniciaba en las nuevos nodos.
+
+![](/img/29.png)
+
+En el grupo de auto escalamiento en el informe de actividad observamos las respectivas alertas en el momento en que se instancias nuevas de EC2 cuando el consumo de CPU supera en este caso el 50%
+
+![](/img/22.png)
+
+Instancias
+
+![](/img/27.png)
+
+Igualmente en el momento en que el servicio deja de consumir tanta cpu, el grupo de autoescalamiento se encarga de terminar las instancias que no se requiera como observamos en la siguiente imagen:
+
+![](/img/31.png)
+
+Como conclusión podemos decir que el grupo de auto escalamiento es una estrategia de escalamiento horizontal que permite reducir costos y tener una infraestructura elastica según los requerimientos de nuestros clientes.
+
+## Built With
+
+  * Maven
+  * Aws
+  * Docker
+  * Spark
+
+## Versioning
+
+We use Git for versioning, and dockerhub for images
+
+## Author
+
+* **Sergio Alejandro Bohorquez Alzate** 
+Student at the Colombian School of Engineering
+
+## License
+
+This project is licensed under the GNU v3.0 - see the [LICENSE.md](LICENSE.md) file for details
+
+
 
 
 
