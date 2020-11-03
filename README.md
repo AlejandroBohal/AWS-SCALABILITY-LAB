@@ -11,11 +11,11 @@
 
 ## Contexto del problema
 
-El problema consiste en el cálculo de números factoriales grandes, el programa cuenta con una implementación iterativa (no dinámica) la idea es que el consumo de cpu sea alto para esto haremos pruebas de carga intensivas al endpoint /factorial/{large-number} la idea de que el consumo de cpu sea alto es poder ver la potencia de Auto escalado de AWS. Puede ver el código fuente de la implementación en este repositorio, y la documentación en la siguiente [GitHub page](google.com) 
+El problema consiste en el cálculo de números factoriales grandes, el programa cuenta con una implementación iterativa (no dinámica) la idea es que el consumo de cpu sea alto para esto haremos pruebas de carga intensivas al endpoint /factorial/{large-number} la idea de que el consumo de cpu sea alto es poder ver la potencia de Auto escalado de AWS. Puede ver el código fuente de la implementación en este repositorio, y la documentación en la siguiente [GitHub page](https://alejandrobohal.github.io/AWS-SCALABILITY-LAB/) 
 
 Observamos nuestro Dockerfile a continuación:
 
-    ![dockerfile](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
+    ![](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
 
 ## AWS AUTO SCALING - TUTORIAL
 
