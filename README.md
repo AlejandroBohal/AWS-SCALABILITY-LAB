@@ -11,11 +11,11 @@
 
 ## Contexto del problema
 
-El problema consiste en el cálculo de números factoriales grandes, el programa cuenta con una implementación iterativa (no dinámica) la idea es que el consumo de cpu sea alto para esto haremos pruebas de carga intensivas al endpoint /factorial/{large-number} la idea de que el consumo de cpu sea alto es poder ver la potencia de Auto escalado de AWS. Puede ver el código fuente de la implementación en este repositorio, y la documentación en la siguiente [GitHub page](google.com) 
+El problema consiste en el cálculo de números factoriales grandes, el programa cuenta con una implementación iterativa (no dinámica) la idea es que el consumo de cpu sea alto para esto haremos pruebas de carga intensivas al endpoint /factorial/{large-number} la idea de que el consumo de cpu sea alto es poder ver la potencia de Auto escalado de AWS. Puede ver el código fuente de la implementación en este repositorio, y la documentación en la siguiente [GitHub page](https://alejandrobohal.github.io/AWS-SCALABILITY-LAB/) 
 
 Observamos nuestro Dockerfile a continuación:
 
-    ![dockerfile](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
+![](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
 
 ## AWS AUTO SCALING - TUTORIAL
 
@@ -47,4 +47,64 @@ Observamos nuestro Dockerfile a continuación:
     
     ![](https://media.discordapp.net/attachments/352624122301513730/773290556096905216/unknown.png?width=822&height=475)
     
-3. 
+3. **Ingrese a la máquina y clone este repositorio**
+    
+    ```
+    ssh -i "<archivo con la llave de la instancia>" ec2-user@<Direccion IP Instancia>
+    git clone https://github.com/AlejandroBohal/AWS-SCALABILITY-LAB
+    cd AWS-SCALABILITY-LAB
+    ```
+
+4. **Instale Docker y docker compose en la máquina EC2 y haga correr la imagen con el docker compose**
+
+    Para instalar Docker ejecute los siguientes comandos:
+    
+    ```
+    sudo apt update
+    sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    sudo apt install docker-ce
+    sudo usermod -aG docker username
+    ```
+    
+    Para instalar Docker-compose ejecute los siguientes comandos:
+    
+    ```
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    ```
+    
+    Para iniciar el contenedor con el docker-compose ejecute los siguientes comandos:
+    
+    ![](https://media.discordapp.net/attachments/352624122301513730/773303454516248626/unknown.png?width=814&height=475)
+    
+5. **Una vez tenga el docker-compose ejecutandose creará un servicio de ubuntu que permita ejecutarlo cuando se inicie la instancia de EC2**
+    
+    Cree el siguiente archivo en la ruta /etc/systemd/system
+    
+    ![](https://media.discordapp.net/attachments/352624122301513730/773306336166936636/unknown.png?width=524&height=475)
+    
+    Una vez creado este archivo, inicie el servicio con los siguientes comandos:
+
+    ```
+    systemctl enable docker-service.service
+    systemctl start docker-service.service
+    ```
+    
+    
+6. **Cree una AMI (Amazon machine imagen) a partir de la instancia EC2 anteriormente creada**
+    
+    Para crear la AMI siga estos pasos:
+
+    ![](/img/51.png)
+    
+    Ingrese los datos de configuración básica de una AMI
+    
+    ![](/img/6.png)
+
+7. 
+
+
+
