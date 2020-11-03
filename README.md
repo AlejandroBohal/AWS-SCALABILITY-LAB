@@ -104,7 +104,56 @@ Observamos nuestro Dockerfile a continuación:
     
     ![](/img/6.png)
 
-7. 
+7. **Ahora crearemos una nueva configuración de lanzamiento la cual se utilizará posteriormente por nuestro grupo de autoescalamiento*
+
+    Siga estos pasos para la creación de la configuración de lanzamiento:
+    
+    ![](/img/7.png)
+    
+    Ponga un nombre a la configuración y seleccione la AMI anteriormente creada.
+    
+    ![](/img/8.png)
+    
+    Seleccione el grupo de seguridad y la llave pública de la máquina anteriormente creada.
+    
+    ![](/img/10.png)
+    
+8. **Ahora crearemos un grupo de auto escalamiento que utilice esta configuración de lanzamiento (lanza nodos de la red según la capacidad requerida por el sistema)**
+
+    Siga estos pasos para crear el grupo de auto escalamiento:
+    
+    ![](/img/9.png)
+    
+    Seleccione el template de configuración anteriormente creado.
+    
+    ![](/img/11.png)
+    
+    Utilice la VPC (Virtual Private Cloud) por defecto de su cuenta de azure, si desea puede crear otra, además seleccione las zonas de disponibilidad a,b y c que representarán una ubicación geográfica diferente para cada nodo de la red. Por ahora no seleccionaremos ningún balanceador de carga (lo crearemos más adelante).
+    
+    ![](/img/12.png)
+    
+    Para esta prueba de concepto seleccionaremos un máximo de 3 instancias y para la política de escalamiento pondremos la política de seguimiento de objetivos como se ve en la siguiente imagen:
+    
+    ![](/img/13.png)
+
+9. **Crearemos un balanceador de carga de aplicación, que nos permita distribuir el tráfico a nivel de HTTP (este contará con su propia DNS y distribuirá la carga entre los diferentes nodos creados por el grupo de auto escalamiento)**
+
+    Para crear el balanceador de carga siga estos pasos:
+    
+    ![](/img/14.png)
+    
+    Seleccione un balanceador de carga de aplicación
+    
+    ![](/img/15.png)
+    
+    Active las 3 zonas de disponibilidad en el puerto 80, asigne el grupo de seguridad de su primera instancia de EC2 configure el enrutamiento a través de http en el puerto 8080 (o el puerto que le haya asignado en el docker-compose)
+
+    ![](/img/16.png) ![](/img/17.png)
+    ![](/img/18.png) ![](/img/19.png)
+
+10. 
+
+
 
 
 
