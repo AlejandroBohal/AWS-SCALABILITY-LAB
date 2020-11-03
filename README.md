@@ -15,7 +15,7 @@ El problema consiste en el cálculo de números factoriales grandes, el programa
 
 Observamos nuestro Dockerfile a continuación:
 
-    ![](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
+![](https://media.discordapp.net/attachments/352624122301513730/773289501698555944/unknown.png?width=1026&height=433)
 
 ## AWS AUTO SCALING - TUTORIAL
 
