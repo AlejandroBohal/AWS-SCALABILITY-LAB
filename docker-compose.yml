@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: elcostalitoalegre/scalability:factorial
+    container_name: scalabilityfactorial
+    ports:
+      - "8080:6000"
+
