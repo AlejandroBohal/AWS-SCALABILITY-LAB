@@ -5,4 +5,5 @@ services:
     container_name: scalabilityfactorial
     ports:
       - "8080:6000"
+    restart: always
 
